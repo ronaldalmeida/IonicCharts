@@ -10,7 +10,7 @@ export class HomePage {
   
      @ViewChild('radarCanvas') radarCanvas;
   
-     radarChart: any;
+     radarChart:any;
      data:any
      graphdatasets:any=[];
      constructor(public navCtrl: NavController, public navParams: NavParams) {
