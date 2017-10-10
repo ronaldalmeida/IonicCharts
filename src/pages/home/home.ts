@@ -26,7 +26,7 @@ export class HomePage {
              g = Math.floor(Math.random() * 255) + 1  
              b = Math.floor(Math.random() * 255) + 1              
             this.graphdatasets[j] = 
-                {
+                {   label : data[j].Locality +' '+ data[j].State ,
                     backgroundColor: ['rgba('+r+','+g+','+b+',0.5)'],
                     borderColor : ['rgba('+r+','+g+','+b+',1)'],
                     data : [ data[j].AreaSpace_SQFT,data[j].EstimatedRent,data[j].StdDev_SQFT]
