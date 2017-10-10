@@ -1,5 +1,5 @@
 import { Component,Renderer } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,AlertController } from 'ionic-angular';
 import {Http} from '@angular/http';
 import { HomePage } from '../../pages/home/home'
 @Component({
@@ -14,7 +14,7 @@ export class ContactPage {
   // count of selected list items
   // if more than 2, compare button is set to visble
   selectedItemCount: number=0;
-  constructor(public navCtrl: NavController,private http:Http,private renderer: Renderer) {
+  constructor(public navCtrl: NavController,private http:Http,private renderer: Renderer,public alertCtrl: AlertController) {
     // get Json data from file
            this.http.get('./assets/data/housing_compare_app.json')
                    .subscribe(res => this.data = res.json());
@@ -47,7 +47,13 @@ export class ContactPage {
     }
     //more than 4 selections
     else if(this.selectedItemCount >=4)
-      {alert("At a maximum 4 items can be compared");}
+      {let alert = this.alertCtrl.create({
+        title: 'Hey!',
+        subTitle: 'At a maximum 4 items can be compared',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
    }
 
    compareClick()
