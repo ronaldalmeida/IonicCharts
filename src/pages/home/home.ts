@@ -17,16 +17,18 @@ export class HomePage {
       // get data passed from navigation   
       this.data = this.navParams.get('data');
       debugger;
-      this.buildData(this.data)
+      this.buildGraphJsonData(this.data)
      }
-      buildData(data:any){
-     
-        var graphData = [];
-        for (var j = 0; j < data.length; j++) {    
+     buildGraphJsonData(data:any){
+             var r,g,b;
+        for (var j = 0; j < data.length; j++) {   
+             r = Math.floor(Math.random() * 255) + 1 ;
+             g = Math.floor(Math.random() * 255) + 1  
+             b = Math.floor(Math.random() * 255) + 1              
             this.graphdatasets[j] = 
                 {
-                    backgroundColor: ['rgba(220,220,220,0.5)'],
-                    borderColor : ['rgba(220,220,220,1)'],
+                    backgroundColor: ['rgba('+r+','+g+','+b+',0.5)'],
+                    borderColor : ['rgba('+r+','+g+','+b+',1)'],
                     data : [ data[j].AreaSpace_SQFT,data[j].EstimatedRent,data[j].StdDev_SQFT]
                 }
             }
