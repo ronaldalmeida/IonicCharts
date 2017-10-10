@@ -22,37 +22,30 @@ export class HomePage {
       buildData(data:any){
      
         var graphData = [];
-        data.forEach(element => {
-        graphData ["data"] = element.AreaSpace_SQFT + ","+element.EstimatedRent +","+element.StdDev_SQFT; 
-        this.graphdatasets.push(graphData);
-        });
+        for (var j = 0; j < data.length; j++) {    
+            this.graphdatasets[j] = 
+                {
+                    backgroundColor: ['rgba(220,220,220,0.5)'],
+                    borderColor : ['rgba(220,220,220,1)'],
+                    data : [ data[j].AreaSpace_SQFT,data[j].EstimatedRent,data[j].StdDev_SQFT]
+                }
+            }
       }
      ionViewDidLoad() {
          this.radarChart = new Chart(this.radarCanvas.nativeElement, {
   
              type: 'radar',
              data: {
-                 labels: ["AreaSpace_SQFT", "EstimatedRent", "StdDev_SQFT"],
-                 datasets: [{
-                     data: [this.data[0].AreaSpace_SQFT,this.data[0].EstimatedRent, this.data[0].StdDev_SQFT],
-                     backgroundColor: [
-                         'rgba(221, 199, 32, 0.2)'
-                     ],
-                     borderColor: [
-                         'rgba(255,99,132,1)'
-                     ],
-                     borderWidth: 1
-                 }]
-             },
-             options: {
-              scale: {
+                    labels: ["AreaSpace_SQFT", "EstimatedRent", "StdDev_SQFT"],
+                    datasets: this.graphdatasets,
+                    options: {
+                    scale: {
                   // Hides the scale
-                  display: true
-              }
-          }
+                            display: true
+                         }}
+                    }
   
-         });
-         
+                });
   
         }
       }
