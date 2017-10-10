@@ -22,9 +22,9 @@ export class HomePage {
      buildGraphJsonData(data:any){
              var r,g,b;
         for (var j = 0; j < data.length; j++) {   
-             r = Math.floor(Math.random() * 255) + 1 ;
-             g = Math.floor(Math.random() * 255) + 1  
-             b = Math.floor(Math.random() * 255) + 1              
+             r = Math.floor(Math.random() * 100) + 1 ;
+             g = Math.floor(Math.random() * 150) + 30 ; 
+             b = Math.floor(Math.random() * 255) + 100 ;            
             this.graphdatasets[j] = 
                 {   label : data[j].Locality +' '+ data[j].State ,
                     backgroundColor: ['rgba('+r+','+g+','+b+',0.5)'],
