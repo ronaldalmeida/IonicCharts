@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Apartment Listings 
+      <button ion-button icon-right *ngIf="selectedItemCount >=2" (click)="compareClick()">
+         Compare
+          <ion-icon name="podium"></ion-icon>
+        </button>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list multiple="true">
+    <button ion-item *ngFor="let x of data" id="{{x?.id}}" (click)="onItemSelect(x,$event)">
+      <ion-avatar item-start>
+        <img src="https://static.pexels.com/photos/106399/pexels-photo-106399.jpeg">
+      </ion-avatar>
+      <h2>Townhouse available for sale at {{x?.Locality}}</h2>  <h2>Bedrooms:{{x?.Bedrooms}} Bath:{{x?.Bathrooms}}</h2>
+      <h3>State: {{x?.State}}</h3>
+    </button>    
+  </ion-list>
+</ion-content>
