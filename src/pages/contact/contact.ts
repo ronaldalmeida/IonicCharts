@@ -27,8 +27,9 @@ export class ContactPage {
   onItemSelect(data:any,event:any)
    { 
     debugger;
+    var selectedId = event.currentTarget.id;
     // if number of seleted items is less than 4 and the selected list item is not in the array
-     if(this.selectedItemCount <4 && this.selectedDataItems.find(x => x.id == event.currentTarget.id) == undefined)
+     if(this.selectedItemCount <4 && this.selectedDataItems.find(x => x.Id == selectedId) == undefined)
      {
       this.selectedItemCount++;      
       this.selectedDataItems.push(data);
@@ -37,13 +38,13 @@ export class ContactPage {
     }
 
     //if the selected list item is in the array
-     else if( this.selectedDataItems.find(x => x.id == event.currentTarget.id) != undefined)
+     else if( this.selectedDataItems.find(x => x.Id == selectedId) != undefined)
      {
      this.selectedItemCount--; 
      //Remove the class 
      this.renderer.setElementClass(event.target,"selected",false);
      //remove Item from array with matching Id
-     this.selectedDataItems.splice(this.selectedDataItems.findIndex(x => x.id == event.currentTarget.id),1);
+     this.selectedDataItems.splice(this.selectedDataItems.findIndex(x => x.Id == selectedId),1);
     }
     //more than 4 selections
     else if(this.selectedItemCount >=4)
